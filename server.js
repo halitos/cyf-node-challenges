@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Gett all pharmacies for one city
+// Server Level 200 ---- one city only
 
 app.get("/pharmacies", (req, res) => {
   res.json(harrow.pharmacies);
@@ -27,11 +27,35 @@ app.get("/hospitals", (req, res) => {
   res.json(harrow.hospitals);
 });
 
-// Gett pharmacies dynamicly for selected city route
+// Server Level 300___ Dynamic City
 
-app.get("/city/pharmacies", (req, res) => {
-  res.json(harrow.pharmacies);
+app.get("/:city/pharmacies", function (req, res) {
+  if (req.params.city === "harrow") {
+    res.json(harrow.pharmacies);
+  } else if (req.params.city === "stratford") {
+    res.json(stratford.pharmacies);
+  } else res.json(heathrow.pharmacies);
 });
+
+app.get("/:city/doctors", function (req, res) {
+  if (req.params.city === "harrow") {
+    res.json(harrow.doctors);
+  } else if (req.params.city === "stratford") {
+    res.json(stratford.doctors);
+  } else res.json(heathrow.doctors);
+});
+
+app.get("/:city/colleges", function (req, res) {
+  if (req.params.city === "harrow") {
+    res.json(harrow.colleges);
+  } else if (req.params.city === "stratford") {
+    res.json(stratford.colleges);
+  } else res.json(heathrow.colleges);
+});
+
+// Server Level 500 --- all in one single route
+
+app.get("/:city/:service", (req, res) => {});
 
 const PORT = process.env.PORT || 6060;
 app.listen(PORT, () => console.log(`Serving on port ${PORT}`));
