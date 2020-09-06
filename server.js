@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.send(
-    "<h1>Welcome to mini London Guide Server</h1>You should be able to return data based on any city that is passed to the server.<p>Routes for cities are dynamic, but need to select one of harrow, stratford or heathrow.</p><p>Services need to enter static for now which are <b>doctors, colleges, pharmacies</b></p><h4>for example /:city/pharmacies</h4> "
+    "<h1>Welcome to mini London Guide Server</h1>You should be able to return data based on any city that is passed to the server.<p>Routes for cities are dynamic, but need to select one of <b>harrow, stratford or heathrow.</b></p><p>Services need to enter static for now which are <b>doctors, colleges, pharmacies</b></p><h4>for example /:city/pharmacies</h4><p>if you select services on main route it will return only Harrow services</p><h3>Thank you</h3> "
   );
 });
 
