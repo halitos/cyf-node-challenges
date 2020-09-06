@@ -12,6 +12,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.get("/", (req, res) => {
+  res.send(
+    "<h1>Welcome to mini London Guide Server</h1>You should be able to return data based on any city that is passed to the server.<p>Routes for cities are dynamic, but need to select one of harrow, stratford or heathrow.</p><p>Services need to enter static for now which are <b>doctors, colleges, pharmacies</b></p><h4>for example /:city/pharmacies</h4> "
+  );
+});
+
 // Server Level 200 ---- one city only
 
 app.get("/pharmacies", (req, res) => {
