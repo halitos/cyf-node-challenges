@@ -59,6 +59,14 @@ app.get("/:city/colleges", function (req, res) {
   } else res.json(heathrow.colleges);
 });
 
+app.get("/:city/hospitals", function (req, res) {
+  if (req.params.city === "harrow") {
+    res.json(harrow.hospitals);
+  } else if (req.params.city === "stratford") {
+    res.json(stratford.hospitals);
+  } else res.json(heathrow.hospitals);
+});
+
 // Server Level 500 --- all in one single route
 
 app.get("/:city/:service", (req, res) => {});
